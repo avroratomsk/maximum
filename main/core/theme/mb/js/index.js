@@ -21,37 +21,37 @@ const bodyUnLock = (e) => {
 
 // Функция ymaps.ready() будет вызвана, когда
 // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
-ymaps.ready(init);
-function init() {
-  // Создание карты.
-  var myMap = new ymaps.Map("map", {
-    // Координаты центра карты.
-    // Порядок по умолчанию: «широта, долгота».
-    // Чтобы не определять координаты центра карты вручную,
-    // воспользуйтесь инструментом Определение координат.
-    center: [55.76, 37.64],
-    // Уровень масштабирования. Допустимые значения:
-    // от 0 (весь мир) до 19.
-    zoom: 12,
-    controls: [],
-  }, { suppressMapOpenBlock: true });
-}
+// ymaps.ready(init);
+// function init() {
+//   // Создание карты.
+//   var myMap = new ymaps.Map("map", {
+//     // Координаты центра карты.
+//     // Порядок по умолчанию: «широта, долгота».
+//     // Чтобы не определять координаты центра карты вручную,
+//     // воспользуйтесь инструментом Определение координат.
+//     center: [55.76, 37.64],
+//     // Уровень масштабирования. Допустимые значения:
+//     // от 0 (весь мир) до 19.
+//     zoom: 12,
+//     controls: [],
+//   }, { suppressMapOpenBlock: true });
+// }
 
-const toCamelCase = (str) => {
-  let arrayStringSeparated = str.split(/[-_]/g);
-  if (arrayStringSeparated.length > 0) {
-    let firstString = arrayString[0]
-    if (firstString.length > 0) {
-      let firstLetter = firstString[0]
-      if (firstLetter === firstLetter.toUpperCase()) {
-        arrayString = arrayString.map(str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
-      } else {
-        arrayString = arrayString.map((str, index) => index === 0 ? str : str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
-      }
-    }
-    return arrayStringSeparated.join('');
-  }
-}
+// const toCamelCase = (str) => {
+//   let arrayStringSeparated = str.split(/[-_]/g);
+//   if (arrayStringSeparated.length > 0) {
+//     let firstString = arrayString[0]
+//     if (firstString.length > 0) {
+//       let firstLetter = firstString[0]
+//       if (firstLetter === firstLetter.toUpperCase()) {
+//         arrayString = arrayString.map(str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
+//       } else {
+//         arrayString = arrayString.map((str, index) => index === 0 ? str : str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
+//       }
+//     }
+//     return arrayStringSeparated.join('');
+//   }
+// }
 
 
 const colorProductChoiseBtn = document.querySelectorAll('[data-image]');
@@ -613,4 +613,19 @@ if (closeFilter) {
 }
 /*******************************/
 
-const squareDigits = (num) => parseInt([...'' + num].map(m => m * m).join(''));
+const eventListenerHandler = (list, event, func) => {
+  list.forEach(item => item.addEventListener(event, func));
+}
+
+const activeFilter = (e) => {
+  document.querySelectorAll('.filter__item').forEach(item => item.classList.remove('_active'));
+  parent = e.currentTarget.closest('.filter__item');
+  if (parent) parent.classList.toggle('_active');
+}
+
+const filterBtn = document.querySelectorAll('.filter__btn');
+
+if (filterBtn) {
+  eventListenerHandler(filterBtn, 'click', activeFilter);
+  // filterBtn.forEach(btn => btn.addEventListener('click', activeFilter));
+}

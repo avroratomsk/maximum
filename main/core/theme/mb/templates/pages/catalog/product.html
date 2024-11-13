@@ -1,22 +1,13 @@
 {% extends "base.html" %} {% load static %} {% load thumbnail %}
 {% block title %}
-Купить памятник {% if product.model %}модель {%filter lower%}{{product.model }}{% endfilter %}
-{% else %}
-{%filter lower%}{{product.name }}{% endfilter %}
-{% endif %}
 
-в Томске | Акрополь
 {% endblock %}
 {% block description %}
-Купить памятник на могилу в Томске от мастерской Акрополь недорого. Фото памятников и цены указаны на сайте мастерской.
-Модель памятника
-{% if product.model %}{%filter lower%}{{product.model }}{% endfilter %}{% else %}
-{%filter lower%}{{product.name }}{% endfilter %}
-{% endif %}
+
 {% endblock %}
 
-{% block keywords %}
-{%endblock %}
+{% block keywords %}{% endblock %}
+
 {% block content %}
 
 <main class="page">
